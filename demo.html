@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_581148_bq76mur51jdcxr.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="tulipgo.js"></script>
+    <title>围棋</title>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="board">Empty Board</div>
+    <div id="tool">
+        <ul id="panel_nav">
+
+            <li id="forceturn">
+                <select id="changeturn">
+                <option value="-1" selected>交替</option>
+                <option value="0">黑棋</option>
+                <option value="1">白棋</option>
+                </select>
+            </li>
+            
+
+            <li id="undo" onclick="qipu.undo()"><i class="iconfont icon-chexiao"></i></li>
+            <li id="first" onclick="qipu.stepFirst()"><i class="iconfont icon-ai10"></i></li>
+            <li id="prev" onclick="qipu.stepBack()"><i class="iconfont icon-shangyiye"></i></li>
+            <li id="search"><input type="text" size="2"  id="searchstep" /><i class="iconfont icon-sousuo" id="btn_search"></i></li>
+            <li id="next" onclick="qipu.stepNext()"><i class="iconfont icon-xiayiye"></i></li>
+            <li id="last" onclick="qipu.stepLast()"><i class="iconfont icon-ai09"></i></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var qipu=new Go({shownumber:true,showcords:true,size:9});
+    qipu.init('board');
+    let changeturn=document.getElementById('changeturn');
+    changeturn.addEventListener('change',function(){
+        var option=parseInt(changeturn.options[changeturn.selectedIndex].value);
+        qipu.setForceTurn(option);
+    })
+    let btn_search=document.getElementById('btn_search');
+    btn_search.addEventListener('click',function () {
+        let num=document.getElementById('searchstep').value;
+        if(isNaN(num) || parseInt(num)<0 || parseInt(num)>qipu.records.length ||num=='' ){
+            return;
+        }else{
+            qipu.stepTo(num);
+        }
+    })
+</script>
+
+</body>
+</html>
