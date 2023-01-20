@@ -96,8 +96,9 @@ function Go(options) {
         let grid;
         if(type==-1){
             let star9 = [20, 24, 40, 56, 60];
-            let star13 = [42, 45, 48, 81, 84, 87, 114, 117, 120];
+            let star13 = [42, 45, 48, 81, 84, 87, 120, 123, 126];
             let star19 = [60, 66, 72, 174, 180, 186, 288, 294, 300];
+            // console.log(star13);
             if (
                 (this.size == 9 && star9.includes(gid)) ||
                 (this.size == 13 && star13.includes(gid)) ||
