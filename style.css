@@ -116,3 +116,14 @@
 .iconfont:active {
     background-color:#FF704D;
 }
+
+body:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: url("../assets/grid.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_black.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_white.gif") no-repeat -10000px -1000px
+    width: 0;
+    height: 0
+}
