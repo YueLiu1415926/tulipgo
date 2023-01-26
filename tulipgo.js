@@ -1,4 +1,11 @@
 function Go(options) {
+	// 设置相关变量
+    this.shownumber = options.shownumber | false; //是否显示棋子步序
+    this.showcords = options.showcords | false; //是否显示坐标
+    this.size = options.size; // 棋盘大小
+    this.boardwidth = (options.size - 1) * 30; //棋盘大小（现在因固定棋格宽度，暂不起作用。用于以后响应式调整棋盘大小）
+	
+	// 棋局相关变量
     this.status = {}; //棋盘各个交叉点的状态，0为黑，1为白，-1为空点
     this.records = []; //棋谱次序记录
     this.grouprecords = [];//棋谱每一步的棋块记录
@@ -7,10 +14,6 @@ function Go(options) {
     this.ko = []; //为判断打劫而设的变量。如果本轮有提子且提子数为1，则将该被提子的编号和当前所下子的编号记录到数组中
     this.group = {0: [], 1: []};//棋盘上所有与本色棋子连线而组成的区块+本色棋子独立而成的区块，0为黑区块组，1为白区块组
     this.captured = {0: 0, 1: 0};//被提子的数量。0为被提黑子，1为被提白子
-    this.shownumber = options.shownumber | false; //是否显示棋子步序
-    this.showcords = options.showcords | false; //是否显示坐标
-    this.size = options.size; // 棋盘大小
-    this.boardwidth = (options.size - 1) * 30; //棋盘大小（现在因固定棋格宽度，暂不起作用。用于以后响应式调整棋盘大小）
     this.step=0; //棋谱步序
     this.canclick=true; //是否能够点击棋盘落子
 }
@@ -476,5 +479,19 @@ function Go(options) {
     Go.prototype.setForceTurn=function (forceturn) {
         this.forceturn = forceturn;
         // console.log(this.forceturn);
+    }
+	
+	//重新开始
+    Go.prototype.restart=function () {
+        this.clearBoard();
+		this.redrawBoard();
+		this.step=0;
+		this.records = [];
+		this.grouprecords = [];
+		this.turn = 0;
+		this.ko = [];
+		this.group = {0: [], 1: []};
+		this.captured = {0: 0, 1: 0};
+		this.canclick=true;
     }
 
