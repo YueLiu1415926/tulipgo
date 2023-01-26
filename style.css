@@ -117,12 +117,29 @@
     background-color:#FF704D;
 }
 
+/*棋子图片预加载*/	
 body:after {
     content: "";
     display: block;
     position: absolute;
-    background: url("../assets/grid.gif") no-repeat -10000px -1000px,
+    background: 
+	url("../assets/grid_lt_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_lb_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_rt_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_rb_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_l_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_r_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_t_b.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_b_b.gif") no-repeat -10000px -1000px,
 	url("../assets/grid_black.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_lt_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_lb_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_rt_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_rb_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_l_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_r_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_t_w.gif") no-repeat -10000px -1000px,
+	url("../assets/grid_b_w.gif") no-repeat -10000px -1000px,
 	url("../assets/grid_white.gif") no-repeat -10000px -1000px
     width: 0;
     height: 0
