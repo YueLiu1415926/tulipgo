@@ -139,7 +139,7 @@ function Go(options) {
         return grid;
     }
 
-    //初始化棋盘，在棋盘画面上绘制361个交叉点，根据编号选择正确的交叉点图片
+    //绘制棋盘，在棋盘画面上绘制361个交叉点，根据编号选择正确的交叉点图片
     Go.prototype.drawBoard = function () {
         let html = '';
         let gid = 0;
@@ -158,7 +158,7 @@ function Go(options) {
     }
 
     //在棋盘画面根据当前落子的次序和编号绘制棋子
-    Go.prototype.drawStone = function (node, turn, gid,redraw) {
+    Go.prototype.drawStone = function (node, turn, gid, redraw) {
         grid = this.getGridById(gid, turn);
         node.setAttribute('style',"background-image:url(assets/"+grid+")");
         if(this.shownumber==true){
@@ -266,18 +266,20 @@ function Go(options) {
     //过滤在边角上的棋子的邻近接触点
     Go.prototype.checkBorderround = function (gid) {
         let round = [gid + 1, gid - 1, gid + this.size, gid - this.size];
-        if (gid < this.size) {
+        if (gid - this.size < 0) {
             round.splice(3, 1);
         }
-        if (gid >= this.size * (this.size - 1)) {
+        if (gid + this.size >= this.size * this.size) {
             round.splice(2, 1);
         }
         if (gid % this.size == 0) {
             round.splice(1, 1);
         }
-        if (gid % this.size == this.size - 1) {
+        if ((gid + 1) % this.size == 0) {
             round.splice(0, 1);
         }
+		// console.log(gid)
+		// console.log(round);
         return round;
     }
 
@@ -473,6 +475,6 @@ function Go(options) {
     //设置行棋次序
     Go.prototype.setForceTurn=function (forceturn) {
         this.forceturn = forceturn;
-        console.log(this.forceturn);
+        // console.log(this.forceturn);
     }
 

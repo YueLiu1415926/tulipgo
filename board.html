@@ -34,9 +34,10 @@
     </div>
 </div>
 <script type="text/javascript">
-    var url=window.location.href;
-    var parts=url.split('=');
-    var qipu=new Go({shownumber:true,showcords:true,size:parts[1]});
+    let url=window.location.href;
+    let parts=url.split('=');
+	let boardsize=parseInt(parts[1])
+    var qipu=new Go({shownumber:true,showcords:true,size:boardsize});
     qipu.init('board');
     let changeturn=document.getElementById('changeturn');
     changeturn.addEventListener('change',function(){
